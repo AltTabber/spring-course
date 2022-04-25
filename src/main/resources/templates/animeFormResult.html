@@ -5,8 +5,10 @@
     </head>
     <body>
         <div class="container p-5">
-            <h1>MyAnimeList</h1>
-            <p th:text="${randomString}"></p>
+            <h1 th:text="'Anime - ' + ${animeTitle.id}"></h1>
+            <p>Name: <b type="text" th:text="${animeTitle.name}"></b></p>
+            <p>Description: <b type="text" th:text="${animeTitle.description}"></b></p>
+            <a href="/anime/add">Return to form</a>
         </div>
     </body>
 </html>
