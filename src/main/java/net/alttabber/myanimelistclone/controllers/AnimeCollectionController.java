@@ -23,6 +23,7 @@ public class AnimeCollectionController {
 
     private AnimeCollectionResource animeCollectionResource;
 
+
     @Autowired
     public AnimeCollectionController(AnimeCollectionResource animeCollectionResource) {
         this.animeCollectionResource = animeCollectionResource;
@@ -53,5 +54,12 @@ public class AnimeCollectionController {
 
         return "animeFormResult";
     }
+
+    @GetMapping("/list")
+    public String list(Model model){
+        model.addAttribute("animeTitleList", animeCollectionResource.getAnimeTitleList());
+        return "animeList";
+    }
+
 
 }

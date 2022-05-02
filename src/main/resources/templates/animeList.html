@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="index :: head">
+    </head>
+    <body>
+        <header th:replace="index :: header" />
+
+        <div class="container p-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cover</th>
+                        <th scope="col">Anime Title</th>
+                        <th scope="col">Score</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="animeTitle,iter : ${animeTitleList}">
+                        <th scope="row" th:text="${iter.count}">1</th>
+                        <td>
+                            <img th:src="@{${animeTitle.coverUrl}}" th:if="${animeTitle.coverUrl != null}" />
+                        </td>
+                        <td th:text="${animeTitle.name}">Otto</td>
+                        <td th:text="${animeTitle.score}">@mdo</td>
+                        <td th:text="${animeTitle.type}">@mdo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer th:replace="index :: footer" />
+    </body>
+</html>

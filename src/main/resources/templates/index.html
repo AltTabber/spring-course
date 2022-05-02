@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <title>MyAnimeList</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    </head>
+    <body>
+        <header th:fragment="header">
+            <h1 class="text-center">MyAnimeListClone</h1>
+        </header>
+
+
+        <footer th:fragment="footer">
+            <div class="text-center">
+                <p class="footer-sign">Produced by AltTabber</p>
+            </div>
+        </footer>
+    </body>
+</html>
