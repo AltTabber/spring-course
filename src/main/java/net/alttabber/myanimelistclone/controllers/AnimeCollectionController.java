@@ -2,6 +2,7 @@ package net.alttabber.myanimelistclone.controllers;
 
 import net.alttabber.myanimelistclone.data.AnimeTitle;
 import net.alttabber.myanimelistclone.resource.AnimeCollectionResource;
+import net.alttabber.myanimelistclone.resource.PaginatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,13 @@ import java.util.Map;
 public class AnimeCollectionController {
 
     private AnimeCollectionResource animeCollectionResource;
-
+    private PaginatorService paginatorService;
 
     @Autowired
-    public AnimeCollectionController(AnimeCollectionResource animeCollectionResource) {
+    public AnimeCollectionController(AnimeCollectionResource animeCollectionResource,
+                                     PaginatorService paginatorService) {
         this.animeCollectionResource = animeCollectionResource;
+        this.paginatorService = paginatorService;
     }
 
     @GetMapping("/add")
@@ -56,8 +59,16 @@ public class AnimeCollectionController {
     }
 
     @GetMapping("/list")
-    public String list(Model model){
-        model.addAttribute("animeTitleList", animeCollectionResource.getAnimeTitleList());
+    public String list(Model model, @Nullable @RequestParam("page") Integer pageNumber){
+        if(pageNumber == null){
+            pageNumber = 1;
+        }
+        Integer pageSize = 10;
+
+        List<AnimeTitle> animeTitleListPage = this.paginatorService.getPageWithModel(
+                animeCollectionResource.getAnimeTitleList(), pageNumber, pageSize, model);
+
+        model.addAttribute("animeTitleList", animeTitleListPage);
         return "animeList";
     }
 

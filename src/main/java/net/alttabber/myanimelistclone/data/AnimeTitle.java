@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class AnimeTitle {
 
-    private String id;
+    private Integer id;
     private String name;
     private String score;
     private String coverUrl;
@@ -13,7 +13,7 @@ public class AnimeTitle {
     private AnimeTitleStatus status;
 
     public AnimeTitle() {
-        this.id = Integer.toString(new Random().nextInt());
+        this.id = new Random().nextInt();
     }
 
     public AnimeTitle(String name, String score, String coverUrl, AnimeTitleType type, AnimeTitleStatus status) {
@@ -25,7 +25,17 @@ public class AnimeTitle {
         this.status = status;
     }
 
-    public String getId() {
+    public AnimeTitle(Integer id, String name, String score, String coverUrl, AnimeTitleType type, String description, AnimeTitleStatus status) {
+        this.id = id;
+        this.name = name;
+        this.score = score;
+        this.coverUrl = coverUrl;
+        this.type = type;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -45,7 +55,7 @@ public class AnimeTitle {
         this.description = description;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

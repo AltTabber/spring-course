@@ -8,25 +8,38 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Cover</th>
+                        <th scope="col" class="col-sm-1">#</th>
+                        <th scope="col" class="col-sm-1">Cover</th>
                         <th scope="col">Anime Title</th>
                         <th scope="col">Score</th>
                         <th scope="col">Type</th>
+                        <th scope="col" class="col-sm-1"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="animeTitle,iter : ${animeTitleList}">
-                        <th scope="row" th:text="${iter.count}">1</th>
+                        <th scope="row" th:text="${(page - 1) * pageSize + iter.count}">1</th>
                         <td>
-                            <img th:src="@{${animeTitle.coverUrl}}" th:if="${animeTitle.coverUrl != null}" />
+                            <img class="table-image" th:src="@{${animeTitle.coverUrl}}" th:if="${animeTitle.coverUrl != null}" />
                         </td>
                         <td th:text="${animeTitle.name}">Otto</td>
                         <td th:text="${animeTitle.score}">@mdo</td>
                         <td th:text="${animeTitle.type}">@mdo</td>
+                        <td>
+                            <a href="#" class="icon-button">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="#" class="icon-button">
+                                <i class="bi bi-x-lg"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <div th:replace="paginator :: base"
+                 th:page="${page}"
+                 th:pageAmount="${pageAmount}"
+                 th:tableHref="/anime/list"></div>
         </div>
 
         <footer th:replace="index :: footer" />
