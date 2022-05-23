@@ -5,9 +5,9 @@
     </head>
     <body>
         <div class="container p-5">
-            <h1 th:text="'Anime - ' + ${animeTitle.id}"></h1>
-            <p>Name: <b type="text" th:text="${animeTitle.name}"></b></p>
-            <p>Description: <b type="text" th:text="${animeTitle.description}"></b></p>
+            <h1 th:text="'Anime - ' + ${animeTitleDto.id}"></h1>
+            <p>Name: <b type="text" th:text="${animeTitleDto.name}"></b></p>
+            <p>Description: <b type="text" th:text="${animeTitleDto.description}"></b></p>
             <p>Count: <b type="text" th:text="${animeTitleCount}"></b></p>
             <form th:action="@{/anime/delete}" method="POST">
                 <p><input type="submit" value="delete"></p>

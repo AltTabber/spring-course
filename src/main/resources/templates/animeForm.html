@@ -6,7 +6,7 @@
     <body>
         <div class="container p-5">
             <h1>Add Anime</h1>
-            <form th:action="@{/anime/add}" method="POST" th:object="${animeTitle}">
+            <form th:action="@{/anime/add}" method="POST" th:object="${animeTitleDto}">
                 <p>Name: <input type="text" th:field="*{name}" /></p>
                 <p>Description: <input type="text" th:field="*{description}" /></p>
                 <p><input type="submit" value="Submit"></p>

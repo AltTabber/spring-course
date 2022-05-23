@@ -17,14 +17,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="animeTitle,iter : ${animeTitleList}">
+                    <tr th:each="animeTitleDto,iter : ${animeTitleList}">
                         <th scope="row" th:text="${(page - 1) * pageSize + iter.count}">1</th>
                         <td>
-                            <img class="table-image" th:src="@{${animeTitle.coverUrl}}" th:if="${animeTitle.coverUrl != null}" />
+                            <img class="table-image" th:src="@{${animeTitleDto.coverUrl}}" th:if="${animeTitleDto.coverUrl != null}" />
                         </td>
-                        <td th:text="${animeTitle.name}">Otto</td>
-                        <td th:text="${animeTitle.score}">@mdo</td>
-                        <td th:text="${animeTitle.type}">@mdo</td>
+                        <td th:text="${animeTitleDto.name}">Otto</td>
+                        <td th:text="${animeTitleDto.score}">@mdo</td>
+                        <td th:text="${animeTitleDto.type}">@mdo</td>
                         <td>
                             <a href="#" class="icon-button">
                                 <i class="bi bi-pencil"></i>

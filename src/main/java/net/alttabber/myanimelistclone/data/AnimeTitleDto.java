@@ -2,9 +2,9 @@ package net.alttabber.myanimelistclone.data;
 
 import java.util.Random;
 
-public class AnimeTitle {
+public class AnimeTitleDto {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String score;
     private String coverUrl;
@@ -12,11 +12,11 @@ public class AnimeTitle {
     private String description;
     private AnimeTitleStatus status;
 
-    public AnimeTitle() {
-        this.id = new Random().nextInt();
+    public AnimeTitleDto() {
+        this.id = new Random().nextLong();
     }
 
-    public AnimeTitle(String name, String score, String coverUrl, AnimeTitleType type, AnimeTitleStatus status) {
+    public AnimeTitleDto(String name, String score, String coverUrl, AnimeTitleType type, AnimeTitleStatus status) {
         this();
         this.name = name;
         this.score = score;
@@ -25,7 +25,7 @@ public class AnimeTitle {
         this.status = status;
     }
 
-    public AnimeTitle(Integer id, String name, String score, String coverUrl, AnimeTitleType type, String description, AnimeTitleStatus status) {
+    public AnimeTitleDto(Long id, String name, String score, String coverUrl, AnimeTitleType type, String description, AnimeTitleStatus status) {
         this.id = id;
         this.name = name;
         this.score = score;
@@ -35,7 +35,7 @@ public class AnimeTitle {
         this.status = status;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class AnimeTitle {
         this.description = description;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
