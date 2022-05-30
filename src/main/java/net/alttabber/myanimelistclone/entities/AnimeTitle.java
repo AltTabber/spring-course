@@ -17,13 +17,13 @@ public class AnimeTitle {
     @Column(length = 800)
     private String description;
 
-    private String coverUrl;
+    @ManyToOne
+    @JoinColumn(name="image_id")
+    private Image image;
 
     private String score;
 
     private AnimeTitleType type;
-
-    private AnimeTitleStatus status;
 
     public Long getId() {
         return id;
@@ -49,14 +49,6 @@ public class AnimeTitle {
         this.description = description;
     }
 
-    public String getCoverUrl() {
-        return coverUrl;
-    }
-
-    public void setCoverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
-    }
-
     public String getScore() {
         return score;
     }
@@ -73,11 +65,11 @@ public class AnimeTitle {
         this.type = type;
     }
 
-    public AnimeTitleStatus getStatus() {
-        return status;
+    public Image getImage() {
+        return image;
     }
 
-    public void setStatus(AnimeTitleStatus status) {
-        this.status = status;
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

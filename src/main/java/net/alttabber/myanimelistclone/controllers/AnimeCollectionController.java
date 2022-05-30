@@ -65,6 +65,22 @@ public class AnimeCollectionController {
         return "animeList";
     }
 
+    @GetMapping("/{userId}/list")
+    public String list(Model model, @PathVariable("userId") Long userId,
+                       @Nullable @RequestParam("page") Integer pageNumber){
+        if(pageNumber == null){
+            pageNumber = 1;
+        }
+        Integer pageSize = 10;
+
+
+        List<AnimeTitleDto> animeTitleDtoListPage = this.paginatorService.getPageWithModel(
+                animeCollectionResource.getAnimeTitleCollection(userId), pageNumber, pageSize, model);
+
+        model.addAttribute("animeTitleList", animeTitleDtoListPage);
+        return "animeList";
+    }
+
     @GetMapping("/createData")
     public String createList(){
 
